@@ -18,3 +18,5 @@ To install the Python dependencies, run:
 To start the Flask server:
 
 `python flask_system.py`
+
+Then open the HTML file and finally load the JSON

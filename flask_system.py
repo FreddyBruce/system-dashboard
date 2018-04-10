@@ -7,12 +7,12 @@ import psutil
 from flask import Flask
 from flask_cors import CORS, cross_origin
 
-
 app = Flask(__name__)
-CORS(app) # Necessary since API is running locally
+CORS(app)   # Necessary since API is running locally
 
 # Should match the period (in seconds) in Freeboard
 period = 1
+
 
 @cross_origin()
 @app.route('/')
@@ -25,6 +25,7 @@ def index():
     # so sample over a period (in seconds) to get rate.
 
     time.sleep(period)
+    print('refresh')
 
     cpu_data = psutil.cpu_percent(interval=None)
     ram_data = psutil.virtual_memory()
@@ -57,9 +58,6 @@ def index():
     }
 
     return json.dumps(data)
-
-
-
 
 if __name__ == "__main__":
     print("System API up at http://localhost:5002")
